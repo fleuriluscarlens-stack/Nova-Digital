@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA DIGITAL | Services numériques</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #172554;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    background: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+nav a {
+    text-decoration: none;
+    color: #172554;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #1e3a8a;
+}
+
+.hero p {
+    font-size: 19px;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    color: #475569;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+section {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    color: #1e3a8a;
+}
+
+.intro {
+    color: #64748b;
+    margin-bottom: 40px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(37,99,235,0.09);
+    border: 1px solid #e2e8f0;
+}
+
+.card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.about {
+    background: #f8fafc;
+}
+
+.contact {
+    background: #eff6ff;
+}
+
+.contact p {
+    margin: 15px 0 25px;
+}
+
+footer {
+    background: #172554;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NOVA DIGITAL</div>
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="accueil">
+    <h1>Développez votre activité avec le digital</h1>
+    <p>
+        Bienvenue chez NOVA DIGITAL !
+        Nous vous accompagnons dans la création de votre présence
+        en ligne grâce à des solutions numériques modernes.
+    </p>
+    <a href="#contact" class="btn">Découvrir nos services</a>
+</section>
+
+<section id="services">
+    <h2>Nos services</h2>
+    <p class="intro">
+        Des solutions numériques pour développer vos projets.
+    </p>
+
+    <div class="services">
+
+        <div class="card">
+            <div class="icon">💻</div>
+            <h3>Création de sites web</h3>
+            <p>
+                Des sites modernes et adaptés aux ordinateurs
+                et téléphones.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>Design graphique</h3>
+            <p>
+                Création de visuels, affiches et supports
+                pour votre communication.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Réseaux sociaux</h3>
+            <p>
+                Création de contenus pour améliorer
+                votre présence sur Internet.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✍️</div>
+            <h3>Rédaction numérique</h3>
+            <p>
+                Rédaction de textes, descriptions
+                et contenus professionnels.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Assistance digitale</h3>
+            <p>
+                Accompagnement dans vos projets
+                et tâches numériques.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Solutions personnalisées</h3>
+            <p>
+                Des services adaptés aux besoins
+                de votre entreprise.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="apropos">
+    <h2>À propos de NOVA DIGITAL</h2>
+    <p class="intro">
+        NOVA DIGITAL est un projet de services numériques
+        destiné aux entrepreneurs, petites entreprises
+        et particuliers.
+    </p>
+    <p>
+        Notre objectif est de rendre les outils digitaux
+        plus accessibles et de vous aider à développer
+        vos projets en ligne.
+    </p>
+</section>
+
+<section class="contact" id="contact">
+    <h2>Parlons de votre projet</h2>
+    <p>
+        Vous souhaitez créer un site web ou obtenir
+        un service numérique ?
+    </p>
+
+    <a class="btn"
+       href="mailto:tonadresse@example.com?subject=Demande%20de%20service%20NOVA%20DIGITAL">
+       Nous contacter par email
+    </a>
+</section>
+
+<footer>
+    <p>© 2026 NOVA DIGITAL — Tous droits réservés.</p>
+    <p>Votre partenaire numérique.</p>
+</footer>
+
+</body>
+</html>
