@@ -11,7 +11,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+<div style="text-align:center; padding:20px;">
+  <p>👀 Visites de NOVA DIGITAL :</p>
+  <strong id="visit-count">Chargement...</strong>
+</div>
 
+<script>
+  const visitKey = "novaDigitalVisitCount";
+  let visits = Number(localStorage.getItem(visitKey) || 0);
+
+  visits += 1;
+  localStorage.setItem(visitKey, visits);
+
+  document.getElementById("visit-count").textContent = visits;
+</script>
 body {
     font-family: Arial, sans-serif;
     color: #172554;
@@ -159,12 +172,15 @@ footer {
 
   <a href="mailto:fleurilusjuno
   @gmail.com">
+
+  
     Envoyer un e-mail
   </a>
 </section>
 
 <header>
     <div class="logo">NOVA DIGITAL</div>
+    <a href="dashboard.html">Mon solde 💰</a>
     <nav>
         <a href="#accueil">Accueil</a>
         <a href="#services">Services</a>
@@ -180,74 +196,10 @@ footer {
         Nous vous accompagnons dans la création de votre présence
         en ligne grâce à des solutions numériques modernes.
     </p>
-    <a href="#contact" class="btn">Découvrir nos services</a>
+    <a href="services.html" class="btn">Découvrir nos services</a>
 </section>
 
-<section id="services">
-    <h2>Nos services</h2>
-    <p class="intro">
-        Des solutions numériques pour développer vos projets.
-    </p>
-
-    <div class="services">
-
-        <div class="card">
-            <div class="icon">💻</div>
-            <h3>Création de sites web</h3>
-            <p>
-                Des sites modernes et adaptés aux ordinateurs
-                et téléphones.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h3>Design graphique</h3>
-            <p>
-                Création de visuels, affiches et supports
-                pour votre communication.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">📱</div>
-            <h3>Réseaux sociaux</h3>
-            <p>
-                Création de contenus pour améliorer
-                votre présence sur Internet.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">✍️</div>
-            <h3>Rédaction numérique</h3>
-            <p>
-                Rédaction de textes, descriptions
-                et contenus professionnels.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">📊</div>
-            <h3>Assistance digitale</h3>
-            <p>
-                Accompagnement dans vos projets
-                et tâches numériques.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚀</div>
-            <h3>Solutions personnalisées</h3>
-            <p>
-                Des services adaptés aux besoins
-                de votre entreprise.
-            </p>
-        </div>
-
-    </div>
-</section>
-
+<
 <section class="about" id="apropos">
     <h2>À propos de NOVA DIGITAL</h2>
     <p class="intro">
@@ -281,6 +233,11 @@ footer {
 
      .</p>
 </footer>
-
+<script>
+function toggleInfo(id) {
+  const info = document.getElementById(id);
+  info.hidden = !info.hidden;
+}
+</script>
 </body>
 </html>
