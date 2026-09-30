@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nos services | NOVA DIGITAL</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #20243a;
+    }
+
+    header {
+      background: #172554;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 55px 20px 25px;
+    }
+
+    .intro h1 {
+      font-size: 36px;
+      margin: 0 0 12px;
+      color: #172554;
+    }
+
+    .intro p {
+      color: #64748b;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .services {
+      width: min(1100px, 90%);
+      margin: 25px auto 45px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      background: white;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      color: #20243a;
+      font: inherit;
+      width: 100%;
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: #6388e8;
+      box-shadow: 0 10px 25px #17255418;
+      outline: none;
+    }
+
+    .service-icon {
+      display: block;
+      font-size: 43px;
+      margin-bottom: 15px;
+    }
+
+    .service-card h2 {
+      color: #2457d6;
+      font-size: 19px;
+      margin: 0 0 12px;
+    }
+
+    .service-card p {
+      color: #64748b;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .details {
+      display: none;
+      width: min(750px, 90%);
+      margin: 0 auto 50px;
+      background: white;
+      border: 1px solid #dbe5f5;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 25px #17255412;
+    }
+
+    .details.show {
+      display: block;
+    }
+
+    .details h2 {
+      color: #172554;
+      margin-top: 0;
+    }
+
+    .details p {
+      color: #526078;
+      line-height: 1.7;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: #2457d6;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-button:hover {
+      background: #173fa8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2457d6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #172554;
+      color: #dbeafe;
+      text-align: center;
+      padding: 22px 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .intro h1 {
+        font-size: 29px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .details {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">NOVA DIGITAL</div>
+    <a href="index.html">← Retour à l’accueil</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Nos services</h1>
+      <p>Découvrez nos solutions numériques pour développer vos projets.</p>
+    </section>
+
+    <section class="services" aria-label="Liste des services">
+
+      <button class="service-card" type="button" onclick="showDetails('web')">
+        <span class="service-icon">💻</span>
+        <h2>Création de sites web</h2>
+        <p>Sites modernes pour votre activité</p>
+      </button>
+
+      <button class="service-card" type="button" onclick="showDetails('design')">
+        <span class="service-icon">🎨</span>
+        <h2>Design graphique</h2>
+        <p>Visuels et supports de communication</p>
+      </button>
+
+      <button class="service-card" type="button" onclick="showDetails('social')">
+        <span class="service-icon">📱</span>
+        <h2>Réseaux sociaux</h2>
+        <p>Contenus pour votre présence en ligne</p>
+      </button>
+
+      <button class="service-card" type="button" onclick="showDetails('redaction')">
+        <span class="service-icon">✍️</span>
+        <h2>Rédaction numérique</h2>
+        <p>Textes et descriptions professionnelles</p>
+      </button>
+
+      <button class="service-card" type="button" onclick="showDetails('publicite')">
+        <span class="service-icon">📢</span>
+        <h2>Création de publicité</h2>
+        <p>Publicités pour promouvoir vos offres</p>
+      </button>
+
+    </section>
+
+    <section id="details" class="details" aria-live="polite">
+      <h2 id="detail-title"></h2>
+      <p id="detail-description"></p>
+      <a class="contact-button" href="index.html#contact">
+        Demander ce service
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 NOVA DIGITAL — Tous droits réservés.
+  </footer>
+
+  <script>
+    const services = {
+      web: {
+        title: "💻 Création de sites web",
+        description: "Nous créons des sites modernes adaptés aux ordinateurs et aux téléphones pour présenter votre entreprise, vos produits ou vos services."
+      },
+
+      design: {
+        title: "🎨 Design graphique",
+        description: "Nous réalisons des affiches, des visuels et des supports graphiques pour votre communication."
+      },
+
+      social: {
+        title: "📱 Réseaux sociaux",
+        description: "Nous préparons des contenus pour présenter votre activité et améliorer votre présence sur les réseaux sociaux."
+      },
+
+      redaction: {
+        title: "✍️ Rédaction numérique",
+        description: "Nous rédigeons des textes, des descriptions de produits et des contenus professionnels adaptés à vos besoins."
+      },
+
+      publicite: {
+        title: "📢 Création de publicité",
+        description: "Nous concevons des publicités visuelles pour promouvoir vos produits, vos services ou votre entreprise sur Internet et les réseaux sociaux."
+      }
+    };
+
+    function showDetails(service) {
+      const selectedService = services[service];
+
+      document.getElementById("detail-title").textContent =
+        selectedService.title;
+
+      document.getElementById("detail-description").textContent =
+        selectedService.description;
+
+      const details = document.getElementById("details");
+      details.classList.add("show");
+
+      details.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  </script>
+
+</body>
+</html>
