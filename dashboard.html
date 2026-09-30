@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon solde | NOVA DIGITAL</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5ff;
+  color: #172554;
+  padding: 25px;
+}
+
+.container {
+  max-width: 750px;
+  margin: 40px auto;
+}
+
+h1 {
+  color: #155eef;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 5px 20px #00000010;
+}
+
+.balance {
+  background: #155eef;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.balance h2 {
+  font-size: 38px;
+  margin: 10px 0;
+}
+
+input {
+  display: block;
+  width: 95%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+button {
+  background: #155eef;
+  color: white;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1047bd;
+}
+
+.transaction {
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.warning {
+  color: #92400e;
+  background: #fef3c7;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💰 NOVA DIGITAL</h1>
+<p>Tableau de suivi des revenus</p>
+
+<div class="balance">
+  <p>Solde enregistré</p>
+  <h2 id="balance">$0.00</h2>
+  <p>Montant de démonstration</p>
+</div>
+
+<div class="card">
+  <h3>Ajouter un paiement reçu</h3>
+
+  <input
+    type="number"
+    id="amount"
+    placeholder="Montant reçu en dollars"
+    min="0.01"
+    step="0.01"
+  >
+
+  <input
+    type="text"
+    id="description"
+    placeholder="Description du paiement"
+  >
+
+  <button onclick="addPayment()">
+    Enregistrer le paiement
+  </button>
+</div>
+
+<div class="card">
+  <h3>Historique des paiements</h3>
+  <div id="history">Aucun paiement enregistré.</div>
+</div>
+
+<p class="warning">
+  Démonstration uniquement : ce tableau ne vérifie pas les paiements
+  réels et ne représente pas l'argent détenu dans un compte bancaire
+  ou un portefeuille.
+</p>
+
+</div>
+<script>
+const STORAGE_KEY = "novaDigitalPayments";
+
+let payments = [];
+
+try {
+  const savedPayments = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+  if (Array.isArray(savedPayments)) {
+    payments = savedPayments.filter(payment =>
+      Number.isFinite(payment.amount) &&
+      payment.amount > 0 &&
+      typeof payment.description === "string"
+    );
+  }
+} catch (error) {
+  payments = [];
+}
+
+function updateDashboard() {
+  const balance = payments.reduce((total, payment) => {
+    return total + payment.amount;
+  }, 0);
+
+  document.getElementById("balance").textContent =
+    "$" + balance.toFixed(2);
+
+  const history = document.getElementById("history");
+  history.replaceChildren();
+
+  if (payments.length === 0) {
+    history.textContent = "Aucun paiement enregistré.";
+    return;
+  }
+
+  payments.slice().reverse().forEach(payment => {
+    const transaction = document.createElement("div");
+    transaction.className = "transaction";
+
+    const title = document.createElement("strong");
+    title.textContent = payment.description;
+
+    const value = document.createElement("span");
+    value.textContent = " +$" + payment.amount.toFixed(2);
+
+    transaction.appendChild(title);
+    transaction.appendChild(value);
+    history.appendChild(transaction);
+  });
+}
+
+function addPayment() {
+  const amountInput = document.getElementById("amount");
+  const descriptionInput = document.getElementById("description");
+
+  const amount = Number(amountInput.value);
+  const description = descriptionInput.value.trim();
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    alert("Entre un montant valide.");
+    return;
+  }
+
+  if (!description) {
+    alert("Ajoute une description.");
+    return;
+  }
+
+  payments.push({
+    amount: amount,
+    description: description
+  });
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(payments));
+
+  updateDashboard();
+
+  amountInput.value = "";
+  descriptionInput.value = "";
+}
+
+updateDashboard();
+</script>
+
+
+
+</body>
+</html>
